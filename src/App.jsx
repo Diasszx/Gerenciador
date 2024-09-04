@@ -35,6 +35,12 @@ function App() {
       // NÃO PRECISO ATUALIZAR
       return task;
     });
+    setTasks(newTask);
+  }
+
+  function onDeleteTaskClick(taskId) {
+    const newTask = tasks.filter((task) => task.id != taskId);
+    setTasks(newTask);
   }
 
   return (
@@ -43,7 +49,11 @@ function App() {
         <h1 className="text-3xl text-slate-100 font-bold text-center">
           Gerenciador de Tarefas
         </h1>
-        <Tasks tasks={tasks} />
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onDeleteTaskClick={onDeleteTaskClick}
+        />
         <AddTask />
       </div>
     </div>
